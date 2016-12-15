@@ -1,0 +1,38 @@
+<?php
+/** 
+file with header and footer included in theme //boom it is working bro....gautam genius....
+**/
+include( dirname(__file__) . '/wp-load.php' );
+
+
+ get_header();
+ 
+ 
+
+ 
+
+ get_sidebar(); 
+ include( dirname(__file__) . '/wp-content/themes/accesspress-store/content.php' );
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ get_footer();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+?>
