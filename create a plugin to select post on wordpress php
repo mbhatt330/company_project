@@ -1,0 +1,61 @@
+<?php
+/*
+Plugin Name: My First Plugin
+Plugin URI: http://mukkiworld.net78.net
+Description: A first plugin for "helloworld"
+Author: Mukesh
+Version: 1.0
+Author URI: http://mukkiworld.net78.net
+*/
+add_action('admin_menu','myfirstplugin_admin_actions');
+function myfirstplugin_admin_actions() {
+          add_option_page('Myfirstplugin','Myfirstplugin','manage_options','__File__','myfirstplugin_admin');
+		  }
+
+function myfirstplugin_admin() 
+{
+?>
+      <div class="wrap">
+	  <h4>a more interesting myfirst plugin</h4>
+	  <table class="widefat">
+	  <thead>
+	  <tr>
+	  <th>POST TITLE </th>
+	  <th>POST ID</th>
+	  </tr>
+	  </thead>
+	  <tfoot>
+	  <tr>
+	  <th>POST TITLE </th>
+	  <th>POST ID</th>
+	  </tr>
+	  </tfoot>
+	  <tbody>
+	  <?php
+	  global $wpdb;
+	  
+	  $mytestdrafts = $wpdb->get_results(
+	  "
+	  select id, post_title
+	  from $wpdb->posts
+	  where post_status = 'draft'
+	  "
+	  );
+	  ?>
+	  <?php
+	  foreach ($mytestdrafts as $mytestdraft)
+	  {
+	  ?>
+	  <tr>
+	  <?php
+	  echo "<td>".$mytestdraft->post_title."</td>";
+	  echo "<td>".$mytestdraft->id."</td>";
+	  ?>
+	  </tr>
+	 
+	  <?php 
+	  } 
+	  ?>	 
+	  
+	   </tbody>
+	   </div>
